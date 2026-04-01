@@ -1,4 +1,4 @@
-import conexao from "./connection";
+import conexao from "./connection.js";
 
 export async function LoginBarbeiros(email, senha) {
     let sql = 'SELECT * FROM tb_barbeiro WHERE ds_email = ? AND ds_senha = ?';
@@ -11,3 +11,4 @@ export async function LoginBarbeiros(email, senha) {
 
     return barbeiro;
 }
+
