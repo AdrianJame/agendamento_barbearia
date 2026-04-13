@@ -38,7 +38,7 @@ endpoint.post('/barbeiro/cadastro', async (req, res) => {
         if (!barbeiro.email.includes('@'))
             throw new Error('Email Inválido');
 
-        if (!/mail\.com$/i.test(barbeiro.email))
+        if (!/mail\.com$/i.test(barbeiro.email) || !/outlook\.com$/i.test(barbeiro.email))
             throw new Error('Email Inválido');
 
 
