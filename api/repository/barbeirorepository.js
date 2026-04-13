@@ -12,3 +12,30 @@ export async function LoginBarbeiros(email, senha) {
     return barbeiro;
 }
 
+export async function CadastrarBarbeiro(barbeiro) {
+    let sql = 'INSERT INTO tb_barbeiro (nm_barbeiro, ds_email, ds_senha) VALUES (?, ?, ?)';
+
+    let [info] = await conexao.query(sql, [
+        barbeiro.nome,
+        barbeiro.email,
+        barbeiro.senha
+    ]);
+
+    barbeiro.id = info.insertId;
+
+    return barbeiro;
+}
+
+export async function verificarDuplicadoEmail(email) {
+    const comando = 'SELECT * FROM tb_barbeiro WHERE ds_email = ?';
+    
+    
+    const [resposta] = await conexao.query(comando, [email]);
+    
+    
+    if (resposta.length != 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
